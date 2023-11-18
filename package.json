@@ -1,0 +1,21 @@
+{
+  "name": "explore-openapi",
+  "version": "0.1.0",
+  "description": "Trying out openapi generator and redoc",
+  "main": "dist/index.js",
+  "scripts": {
+    "codegen:client": "openapi-generator-cli generate -i petstore.yaml -g typescript-fetch -o ${PWD}/out/clients/typescript-fetch",
+    "codegen:server": "openapi-generator-cli generate -i petstore.yaml -g nodejs-express-server -o ${PWD}/out/servers/nodejs-express-server",
+    "codegen:testrun": "openapi-generator-cli generate -i petstore.yaml -g typescript-node -o ${PWD}/packages/server/generated --additional-properties=supportsES6=true",
+    "redoc": "npx @redocly/cli build-docs petstore.yaml --output ${PWD}/redoc/redoc-static.html",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "workspaces": [
+    "packages/*"
+  ],
+  "devDependencies": {
+    "@openapitools/openapi-generator-cli": "^2.7.0"
+  }
+}
